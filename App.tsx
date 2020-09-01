@@ -1,21 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import  * as React from "react";
+import { View, StyleSheet, Text } from "react-native";
+import {firebase} from "./FirebaseConfig";
+import myStyle from "./src/style/Style";
+import Login from "./src/screen/Login";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+
+var getFirebase = firebase.database().ref("product"); 
+
+
+export default class App extends React.Component<Props, state> {
+  constructor(props: any) {
+    super(props);
+    this.state ={
+      getCount : "1"
+    }
+
+    
+  }
+
+
+  render() {
+    
+
+
+    return (
+      <View style= {[myStyle.container]}>
+        <Login></Login>
+      </View>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+type Props = {};
+type state ={
+  getCount : string;
+}
